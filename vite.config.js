@@ -3,12 +3,23 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react({
-    jsxRuntime: 'automatic'
+    jsxRuntime: 'automatic',
+    jsxImportSource: 'react',
+    babel: {
+      plugins: []
+    }
   })],
   envPrefix: ['VITE_', 'REACT_APP_'],
   esbuild: {
-    jsx: 'automatic',
-    jsxFactory: 'React.createElement',
-    jsxFragment: 'React.Fragment'
+    loader: 'jsx',
+    include: /src\\/.*\\.[jt]sx?$/,
+    exclude: []
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx'
+      }
+    }
   }
 })
