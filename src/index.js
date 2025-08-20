@@ -1,4 +1,3 @@
-// Add this at the top of src/index.js (after any imports)
 console.log('ENV DEBUG:', {
   single: import.meta.env.VITE_THRIVECART_SINGLE_URL_LIVE,
   couples: import.meta.env.VITE_THRIVECART_COUPLES_URL_LIVE,
@@ -7,7 +6,6 @@ console.log('ENV DEBUG:', {
   prod: import.meta.env.PROD
 });
 
-// Your existing code continues below...
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -16,9 +14,9 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  React.createElement(React.StrictMode, null,
+    React.createElement(BrowserRouter, null,
+      React.createElement(App)
+    )
+  )
 );
