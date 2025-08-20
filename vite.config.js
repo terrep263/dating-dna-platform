@@ -2,23 +2,16 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react({
-    jsxRuntime: 'automatic',
-    jsxImportSource: 'react',
-    babel: {
-      plugins: []
-    }
-  })],
+  plugins: [react()],
   envPrefix: ['VITE_', 'REACT_APP_'],
   esbuild: {
-    loader: 'jsx',
-    include: /src\\/.*\\.[jt]sx?$/,
-    exclude: []
+    jsx: 'automatic'
   },
   optimizeDeps: {
     esbuildOptions: {
       loader: {
-        '.js': 'jsx'
+        '.js': 'jsx',
+        '.jsx': 'jsx'
       }
     }
   }
