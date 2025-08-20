@@ -32,29 +32,27 @@ function App() {
     initializeAffiliateTracking();
   }, []);
 
-  return (
-    <AppContainer>
-      <Header />
-      <AnimatePresence mode="wait">
-        <MainContent
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/dna-types" element={<DNATypes />} />
-            <Route path="/premium" element={<Premium />} />
-            <Route path="/assessment" element={<SinglesAssessmentApp />} />
-            <Route path="/assessment/couples" element={<CouplesAssessmentApp />} />
-            <Route path="/results" element={<Results />} />
-          </Routes>
-        </MainContent>
-      </AnimatePresence>
-      <Footer />
-    </AppContainer>
+  return React.createElement(AppContainer, null,
+    React.createElement(Header),
+    React.createElement(AnimatePresence, { mode: "wait" },
+      React.createElement(MainContent, {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -20 },
+        transition: { duration: 0.3 }
+      },
+        React.createElement(Routes, null,
+          React.createElement(Route, { path: "/", element: React.createElement(HomePage) }),
+          React.createElement(Route, { path: "/how-it-works", element: React.createElement(HowItWorks) }),
+          React.createElement(Route, { path: "/dna-types", element: React.createElement(DNATypes) }),
+          React.createElement(Route, { path: "/premium", element: React.createElement(Premium) }),
+          React.createElement(Route, { path: "/assessment", element: React.createElement(SinglesAssessmentApp) }),
+          React.createElement(Route, { path: "/assessment/couples", element: React.createElement(CouplesAssessmentApp) }),
+          React.createElement(Route, { path: "/results", element: React.createElement(Results) })
+        )
+      )
+    ),
+    React.createElement(Footer)
   );
 }
 
